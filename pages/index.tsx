@@ -1,9 +1,19 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import { useConvexAuth } from 'convex/react'
+import { RedirectToSignIn } from '@clerk/clerk-react';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const { isLoading, isAuthenticated } = useConvexAuth();
+  if (isLoading) {
+    return <div className='flex items-center justify-center h-screen w-full'>Loading</div>;
+  }
+  if (!isAuthenticated) {
+    return <RedirectToSignIn/>;
+  }
+
   return (
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}

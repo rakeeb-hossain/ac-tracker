@@ -1,7 +1,6 @@
 "use node";
 import { action, internalAction } from "../../_generated/server";
 import { ACClient } from "./client";
-// import { AC_ATCODER_PASS, AC_ATCODER_USERNAME } from "./consts";
 import { api, internal } from "../../_generated/api";
 
 export default internalAction(async ({runMutation, scheduler}) => {
